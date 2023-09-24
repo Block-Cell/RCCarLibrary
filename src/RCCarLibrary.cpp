@@ -1,25 +1,25 @@
 #include "RCCarLibrary.h"
 
-SoftwareSerial bt(12, 13);
+SoftwareSerial bt(TX, RX);
 
 RCCar::RCCar()
 {
     _speed = defaultSpeed;
 }
 
-void RCCar::setFrontMotorPin(int l_pin, int r_pin)
+void RCCar::setFrontMotorPin(uint8_t l_pin, uint8_t r_pin)
 {
 }
 
-void RCCar::setBackMotorPin(int l_pin, int r_pin)
+void RCCar::setBackMotorPin(uint8_t l_pin, uint8_t r_pin)
 {
 }
 
-void RCCar::setSpeedPin(int sp_l_pin, int sp_r_pin)
+void RCCar::setSpeedPin(uint8_t sp_l_pin, uint8_t sp_r_pin)
 {
 }
 
-void RCCar::setSpeedMotor(int speed)
+void RCCar::setSpeedMotor(uint8_t speed)
 {
     if (speed <= 500)
     {
