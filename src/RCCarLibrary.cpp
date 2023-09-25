@@ -9,14 +9,20 @@ RCCar::RCCar()
 
 void RCCar::setFrontMotorPin(uint8_t l_pin, uint8_t r_pin)
 {
+    fl_pin = l_pin;
+    fr_pin = r_pin;
 }
 
 void RCCar::setBackMotorPin(uint8_t l_pin, uint8_t r_pin)
 {
+    bl_pin = l_pin;
+    br_pin = r_pin;
 }
 
-void RCCar::setSpeedPin(uint8_t sp_l_pin, uint8_t sp_r_pin)
+void RCCar::setSpeedPin(uint8_t l_pin, uint8_t r_pin)
 {
+    sp_l_pin = l_pin;
+    sp_r_pin = r_pin;
 }
 
 void RCCar::setSpeedMotor(uint8_t speed)
@@ -45,18 +51,38 @@ void RCCar::_stopSpeed()
 }
 void RCCar::_toRight()
 {
+    digitalWrite(fl_pin, disable);
+    digitalWrite(fr_pin, enable);
+    digitalWrite(bl_pin, disable);
+    digitalWrite(fr_pin, enable);
+
     _initSpeed();
 }
 void RCCar::_toLeft()
 {
+    digitalWrite(fl_pin, enable);
+    digitalWrite(fr_pin, disable);
+    digitalWrite(bl_pin, enable);
+    digitalWrite(fr_pin, disable);
+
     _initSpeed();
 }
 void RCCar::_backward()
 {
+    digitalWrite(fl_pin, enable);
+    digitalWrite(fr_pin, disable);
+    digitalWrite(bl_pin, disable);
+    digitalWrite(fr_pin, enable);
+
     _initSpeed(false);
 }
 void RCCar::_forward()
 {
+    digitalWrite(fl_pin, disable);
+    digitalWrite(fr_pin, enable);
+    digitalWrite(bl_pin, enable);
+    digitalWrite(fr_pin, disable);
+
     _initSpeed();
 }
 void RCCar::_stop()
