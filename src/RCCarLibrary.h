@@ -7,25 +7,28 @@
 #define enable 0x01
 #define disable 0x0
 #define defaultSpeed 255
+
+#define TX 12
+#define RX 13
 class RCCar
 {
 public:
     RCCar();
-    void setFrontMotorPin(int l_pin, int r_pin);
-    void setBackMotorPin(int l_pin, int r_pin);
+    void setFrontMotorPin(uint8_t l_pin, uint8_t r_pin);
+    void setBackMotorPin(uint8_t l_pin, uint8_t r_pin);
 
-    void setSpeedPin(int sp_l_pin, int sp_r_pin);
-    void setSpeedMotor(int speed);
+    void setSpeedPin(uint8_t l_pin, uint8_t r_pin);
+    void setSpeedMotor(uint8_t speed);
 
     void process();
 
 private:
-    int fl_pin, fr_pin;
-    int bl_pin, br_pin;
+    uint8_t fl_pin, fr_pin;
+    uint8_t bl_pin, br_pin;
 
-    int sp_l_pin, sp_r_pin;
+    uint8_t sp_l_pin, sp_r_pin;
 
-    int _speed;
+    uint8_t _speed;
 
     void _toRight();
     void _toLeft();
